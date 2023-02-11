@@ -1,12 +1,13 @@
-import { Configuration } from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import path from 'path';
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const {container} = require("webpack");
+const { dependencies } = require("../package.json");
 
 const extensions = ['.js', '.jsx', '.json', '.ts', '.tsx'];
 
-const config: Configuration = {
+module.exports = {
   entry: path.join(process.cwd(), 'src', 'index.tsx'),
   output: {
     publicPath: '/',
@@ -23,6 +24,23 @@ const config: Configuration = {
     extensions,
   },
   plugins: [
+    new container.ModuleFederationPlugin({
+      name: "god",
+      remotes: {
+        Devil: `Devil@http://localhost:3001/remoteEntry.js`,
+      },
+      shared: {
+        ...dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: dependencies["react"],
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: dependencies["react-dom"],
+        },
+      },
+    }),
     new HtmlWebpackPlugin({
       template: path.join(process.cwd(), 'public', 'index.html'),
     }),
@@ -57,5 +75,3 @@ const config: Configuration = {
     ],
   },
 };
-
-export default config;

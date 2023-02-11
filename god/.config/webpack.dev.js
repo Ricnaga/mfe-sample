@@ -1,16 +1,13 @@
-import path from 'path';
-import { Configuration } from 'webpack';
-import { merge } from 'webpack-merge';
-import webpackMain from './webpack.config';
-import Dotenv from 'dotenv-webpack';
+const path = require("path");
+const { merge } = require("webpack-merge");
+const config = require("./webpack.config");
+const Dotenv = require("dotenv-webpack");
 
-import 'webpack-dev-server';
-
-const configDev: Configuration = merge(webpackMain, {
+module.exports = merge(config, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    port: 3001,
+    port: 3000,
     compress: true,
     hot: true,
     historyApiFallback: true,
@@ -27,5 +24,3 @@ const configDev: Configuration = merge(webpackMain, {
     }),
   ],
 });
-
-export default configDev;
