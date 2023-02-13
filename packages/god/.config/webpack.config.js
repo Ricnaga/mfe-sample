@@ -2,7 +2,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const {container} = require("webpack");
+const { ModuleFederationPlugin } = require("webpack").container;
 const { dependencies } = require("../package.json");
 
 const extensions = [".js", ".jsx", ".json", ".ts", ".tsx"];
@@ -24,19 +24,20 @@ module.exports = {
     extensions,
   },
   plugins: [
-    new container.ModuleFederationPlugin({
-      name: "Devil",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./App": "./src/App",
+    new ModuleFederationPlugin({
+      name: "God",
+      remotes: {
+        Devil: `Devil@http://localhost:3001/remoteEntry.js`,
       },
       shared: {
         ...dependencies,
         react: {
+          eager: true,
           singleton: true,
           requiredVersion: dependencies["react"],
         },
         "react-dom": {
+          eager: true,
           singleton: true,
           requiredVersion: dependencies["react-dom"],
         },
