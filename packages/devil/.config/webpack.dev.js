@@ -13,6 +13,9 @@ module.exports = merge(config, {
     historyApiFallback: true,
     static: path.join(process.cwd(), "public"),
     liveReload: true,
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+    }
   },
   plugins: [
     new Dotenv({
