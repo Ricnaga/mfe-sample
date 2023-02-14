@@ -1,0 +1,9 @@
+{
+  "name": "@frontend/eslint-config",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^8.34.0"
+  }
+}
