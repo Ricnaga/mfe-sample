@@ -1,24 +1,19 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const { dependencies } = require("../package.json");
-const { presets } = require("../babel.config");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const { dependencies } = require('../package.json');
+const { presets } = require('../babel.config');
 
-const extensions = [".js", ".jsx", ".json", ".ts", ".tsx"];
+const extensions = ['.js', '.jsx', '.json', '.ts', '.tsx'];
 
 module.exports = {
-  entry: path.join(process.cwd(), "src", "index.tsx"),
-  output: {
-    publicPath: "http://localhost:3000/",
-    path: path.join(process.cwd(), "build"),
-    filename: "index.bundle.js",
-  },
+  entry: path.join(process.cwd(), 'src', 'index.tsx'),
   resolve: {
     plugins: [
       new TsconfigPathsPlugin({
-        baseUrl: path.join(process.cwd(), "src"),
+        baseUrl: path.join(process.cwd(), 'src'),
         extensions,
       }),
     ],
@@ -26,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "God",
+      name: 'God',
       remotes: {
         Devil: `Devil@http://localhost:3001/remoteEntry.js`,
       },
@@ -35,17 +30,17 @@ module.exports = {
         react: {
           eager: true,
           singleton: true,
-          requiredVersion: dependencies["react"],
+          requiredVersion: dependencies['react'],
         },
-        "react-dom": {
+        'react-dom': {
           eager: true,
           singleton: true,
-          requiredVersion: dependencies["react-dom"],
+          requiredVersion: dependencies['react-dom'],
         },
       },
     }),
     new HtmlWebpackPlugin({
-      template: path.join(process.cwd(), "public", "index.html"),
+      template: path.join(process.cwd(), 'public', 'index.html'),
     }),
     new CleanWebpackPlugin(),
   ],
@@ -56,7 +51,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               presets,
             },
@@ -65,11 +60,11 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|jpeg|png|gif|svg|ttf|woff)$/,
-        use: ["file-loader"],
+        use: ['file-loader'],
       },
     ],
   },

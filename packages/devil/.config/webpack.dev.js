@@ -6,6 +6,11 @@ const Dotenv = require("dotenv-webpack");
 module.exports = merge(config, {
   mode: "development",
   devtool: "inline-source-map",
+  output: {
+    publicPath: "http://localhost:3001/",
+    path: path.join(process.cwd(), "build"),
+    filename: "index.bundle.js",
+  },
   devServer: {
     port: 3001,
     compress: true,

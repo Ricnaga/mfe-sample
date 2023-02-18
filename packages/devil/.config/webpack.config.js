@@ -10,11 +10,6 @@ const extensions = [".js", ".jsx", ".json", ".ts", ".tsx"];
 
 module.exports = {
   entry: path.join(process.cwd(), "src", "index.tsx"),
-  output: {
-    publicPath: "http://localhost:3001/",
-    path: path.join(process.cwd(), "build"),
-    filename: "index.bundle.js",
-  },
   resolve: {
     plugins: [
       new TsconfigPathsPlugin({
