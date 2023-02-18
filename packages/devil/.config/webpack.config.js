@@ -4,11 +4,17 @@ const path = require("path");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const { container } = require("webpack");
 const { dependencies } = require("../package.json");
+const { presets } = require("../babel.config");
 
 const extensions = [".js", ".jsx", ".json", ".ts", ".tsx"];
 
 module.exports = {
   entry: path.join(process.cwd(), "src", "index.tsx"),
+  output: {
+    publicPath: "http://localhost:3001/",
+    path: path.join(process.cwd(), "build"),
+    filename: "index.bundle.js",
+  },
   resolve: {
     plugins: [
       new TsconfigPathsPlugin({
@@ -53,11 +59,7 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: [
-                "@babel/preset-env",
-                ["@babel/preset-react", { runtime: "automatic" }],
-                "@babel/preset-typescript",
-              ],
+              presets,
             },
           },
         ],

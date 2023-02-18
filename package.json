@@ -6,7 +6,8 @@
   "scripts": {
     "god": "yarn workspace @world/god start",
     "devil": "yarn workspace @world/devil start",
-    "start": "concurrently \"yarn god\" \"yarn devil\""
+    "start": "concurrently \"yarn god\" \"yarn devil\"",
+    "lint": "yarn workspaces run lint"
   },
   "workspaces": {
     "packages": [

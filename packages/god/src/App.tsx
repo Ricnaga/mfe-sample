@@ -1,7 +1,7 @@
-import "index.css";
-import React, { Suspense } from "react";
+import 'index.css';
+import React, { Suspense } from 'react';
 
-const DevilApp = React.lazy(() => import("Devil/App"));
+const DevilApp = React.lazy(() => import('Devil/App'));
 
 export default function App() {
   return (
