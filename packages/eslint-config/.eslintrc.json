@@ -21,12 +21,10 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier", "import"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
+    "eqeqeq": "error",
+    "no-eq-null": "error",
+    "max-params": ["error", 2],
+    "prettier/prettier": "error",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -57,8 +55,13 @@
     ]
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "typescript": {}
+      "typescript": {
+        "alwaysTryTypes": true
+      }
     },
     "react": {
       "version": "detect"
