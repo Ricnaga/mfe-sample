@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { RoutesPages } from './';
+import { RoutesPages } from '.';
 
 type RouterContextProps = Partial<Record<'children', ReactNode | JSX.Element>>;
 

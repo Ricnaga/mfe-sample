@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Devil } from './remotes';
 
-const Devil = React.lazy(() => import("Devil/App"));
+type RouteData = Array<{
+  path: string;
+  element: ReactNode | JSX.Element;
+}>;
 
-const routes = [
+const routes: RouteData = [
   {
-    path: '/*',
+    path: '/devil',
     element: <Devil />,
   },
 ];

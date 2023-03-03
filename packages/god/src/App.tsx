@@ -1,15 +1,12 @@
 import 'index.css';
-import React, { Suspense } from 'react';
-
-const DevilApp = React.lazy(() => import('Devil/App'));
+import { RouterContext } from './application/routes/context';
 
 export default function App() {
   return (
-    <>
-      <h1>AMA GOD</h1>
-      <Suspense fallback="CARREGANDO....">
-        <DevilApp />
-      </Suspense>
-    </>
+    <RouterContext>
+      <h1>CONTAINER GOD</h1>
+      <a href="/">main</a>
+      <a href="/devil">DEVIL</a>
+    </RouterContext>
   );
 }
