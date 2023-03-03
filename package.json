@@ -7,7 +7,8 @@
     "god": "yarn workspace @world/god start",
     "devil": "yarn workspace @world/devil start",
     "start": "concurrently \"yarn god\" \"yarn devil\"",
-    "lint": "yarn workspaces run lint"
+    "lint": "yarn workspaces run lint",
+    "typecheck": "concurrently \"yarn workspace @world/god typecheck\" \"yarn workspace @world/devil typecheck\" "
   },
   "workspaces": {
     "packages": [
