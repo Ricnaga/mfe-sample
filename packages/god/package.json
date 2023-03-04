@@ -7,6 +7,10 @@
     "typecheck": "tsc -p tsconfig.json --pretty --noEmit"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.11",
     "axios": "^1.3.2",
     "formik": "^2.2.9",
     "react": "^18.2.0",

@@ -1,3 +1,5 @@
+import { Button } from '@mui/material';
+
 export default function App() {
-  return <h1>AMA DEVIL</h1>;
+  return <Button variant="contained">AMA DEVIL</Button>;
 }
