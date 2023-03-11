@@ -4,11 +4,13 @@
   "private": true,
   "author": "Ricard Naga",
   "scripts": {
+    "storybook": "yarn workspace @world/design storybook",
     "god": "yarn workspace @world/god start",
     "devil": "yarn workspace @world/devil start",
     "start": "concurrently \"yarn god\" \"yarn devil\"",
     "lint": "yarn workspaces run lint",
-    "typecheck": "concurrently \"yarn workspace @world/god typecheck\" \"yarn workspace @world/devil typecheck\" "
+    "typecheck": "concurrently \"yarn workspace @world/god typecheck\" \"yarn workspace @world/devil typecheck\"",
+    "clean": "rimraf node_modules"
   },
   "workspaces": {
     "packages": [
@@ -16,6 +18,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "rimraf": "^4.4.0"
   }
 }
