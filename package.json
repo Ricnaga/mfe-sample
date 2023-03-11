@@ -5,11 +5,11 @@
   "author": "Ricard Naga",
   "scripts": {
     "storybook": "yarn workspace @world/design storybook",
-    "god": "yarn workspace @world/god start",
+    "shell": "yarn workspace @world/shell start",
     "devil": "yarn workspace @world/devil start",
-    "start": "concurrently \"yarn god\" \"yarn devil\"",
+    "start": "concurrently \"yarn shell\" \"yarn devil\"",
     "lint": "yarn workspaces run lint",
-    "typecheck": "concurrently \"yarn workspace @world/god typecheck\" \"yarn workspace @world/devil typecheck\"",
+    "typecheck": "concurrently \"yarn workspace @world/shell typecheck\" \"yarn workspace @world/devil typecheck\"",
     "clean": "rimraf node_modules"
   },
   "workspaces": {
