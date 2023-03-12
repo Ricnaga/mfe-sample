@@ -1,4 +1,4 @@
 export default function GodPage(){
 
-    return <h1>A MA GOD</h1>
+    return <h1>A MA SHELL</h1>
 }

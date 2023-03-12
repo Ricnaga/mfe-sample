@@ -1,0 +1,24 @@
+{
+    "name": "world",
+    "version": "1.0.0",
+    "private": true,
+    "author": "Ricardo Naga",
+    "scripts": {
+      "storybook": "yarn workspace @world/design storybook",
+      "shell": "yarn workspace @world/shell dev",
+      "devil": "yarn workspace @world/devil dev",
+      "dev": "concurrently \"yarn shell\" \"yarn devil\"",
+      "lint": "yarn workspaces run lint",
+      "typecheck": "concurrently \"yarn workspace @world/shell typecheck\" \"yarn workspace @world/devil typecheck\"",
+      "clean": "rimraf node_modules"
+    },
+    "workspaces": {
+      "packages": [
+        "packages/*"
+      ]
+    },
+    "devDependencies": {
+      "concurrently": "^7.6.0",
+      "rimraf": "^4.4.0"
+    }
+  }
