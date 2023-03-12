@@ -1,4 +1,6 @@
-const config = {
+import type { StorybookConfig } from "@storybook/react/types";
+
+const config: StorybookConfig = {
   stories: [
     "../stories/**/*.stories.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
